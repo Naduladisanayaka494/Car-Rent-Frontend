@@ -17,6 +17,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -34,8 +35,10 @@ registerLocaleData(en);
     NzFormModule,
     NzButtonModule,
     NzInputModule,
+    NzMessageModule,
     NzLayoutModule,
     ReactiveFormsModule,
+
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
