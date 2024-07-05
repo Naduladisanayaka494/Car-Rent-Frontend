@@ -5,6 +5,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 @NgModule({
   exports: [
@@ -14,6 +16,8 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
     NzInputModule,
     NzMessageModule,
     NzLayoutModule,
+    NzSelectModule,
+    NzDatePickerModule,
   ],
 })
 export class NgZorroImportsModule {}
