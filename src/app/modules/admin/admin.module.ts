@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponenetComponent } from './components/admin-componenet/admin-componenet.component';
+import { PostCarComponent } from './components/post-car/post-car.component';
 
 
 @NgModule({
   declarations: [
-    AdminComponenetComponent
+    AdminComponenetComponent,
+    PostCarComponent
   ],
   imports: [
     CommonModule,
