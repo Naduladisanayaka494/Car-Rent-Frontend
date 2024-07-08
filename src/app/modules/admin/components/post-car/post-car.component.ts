@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AdminService } from '../../service/admin.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-car',
@@ -16,7 +19,12 @@ export class PostCarComponent implements OnInit {
   listOfTransmission: string[] = ['Automatic', 'Manual'];
   listOfColor: string[] = ['Red', 'Blue', 'Black', 'White', 'Silver'];
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private adminService: AdminService,
+    private message: NzMessageService,
+    private  router :Router
+  ) {
     // Initialize the form in the constructor
     this.postCarForm = this.fb.group({
       name: [null, Validators.required],
@@ -51,13 +59,11 @@ export class PostCarComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.postCarForm.value);
-
+    this.isSpinning=true;
     if (this.postCarForm.invalid || !this.selectedFile) {
-      // Handle form validation or file selection errors
       return;
     }
 
-    // Simulate submission logic here or send data to server
     const formData: FormData = new FormData();
     formData.append('name', this.postCarForm.get('name')!.value);
     formData.append('brand', this.postCarForm.get('brand')!.value);
@@ -71,35 +77,15 @@ export class PostCarComponent implements OnInit {
     formData.append('description', this.postCarForm.get('description')!.value);
     formData.append('year', this.postCarForm.get('year')!.value);
     formData.append('img', this.selectedFile);
-
-    // Display formData in console to verify
     console.log('Form Data:', formData);
-
-    // Simulate loading spinner
-    this.isSpinning = true;
-
-    // Here you would typically send formData to your backend service using HttpClient
-    // Example:
-    // this.yourService.postFormData(formData).subscribe(
-    //   response => {
-    //     console.log('Upload successful:', response);
-    //     this.isSpinning = false;
-    //     this.postCarForm.reset();
-    //     this.selectedFile = null;
-    //     this.imagePreview = null;
-    //   },
-    //   error => {
-    //     console.error('Upload failed:', error);
-    //     this.isSpinning = false;
-    //   }
-    // );
-
-    // Simulate async response
-    setTimeout(() => {
-      this.isSpinning = false;
-      this.postCarForm.reset();
-      this.selectedFile = null;
-      this.imagePreview = null;
-    }, 2000);
+    this.adminService.postcar(formData).subscribe((res: any) => {
+      this.message.success("Car posted Successfully", { nzDuration: 5000 });
+      this.router.navigateByUrl("/admin/dashboard");
+        this.isSpinning = false;
+      console.log(res)
+    }, error => {
+      this.message.error('Error while posting Car', { nzDuration: 5000 });
+       this.isSpinning = false;
+    });
   }
 }

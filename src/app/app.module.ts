@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgZorroImportsModule } from './NgzorroImportsModule';
+import { AdminService } from '../app/modules/admin/service/admin.service';
 registerLocaleData(en);
 
 @NgModule({
@@ -26,7 +27,7 @@ registerLocaleData(en);
     ReactiveFormsModule,
     NgZorroImportsModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, AdminService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

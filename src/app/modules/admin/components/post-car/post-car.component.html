@@ -113,18 +113,14 @@
                 </nz-form-control>
               </nz-form-item>
             </div>
-            <div nz-col nzSpan="24">
+               <div nz-col nzSpan="24">
               <nz-form-item>
                 <nz-form-control
                   nzHasFeedback
                   [nzXs]="24"
                   nzErrorTip="This input is required"
                 >
-                  <nz-year-picker
-                    style="width: 100%"
-                    nzPlaceHolder="Model Year"
-                    formControlName="year"
-                  ></nz-year-picker>
+                  <input nz-input placeholder="Year" formControlName="year" />
                 </nz-form-control>
               </nz-form-item>
             </div>
