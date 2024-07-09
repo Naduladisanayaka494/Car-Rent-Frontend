@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 })
 export class PostCarComponent implements OnInit {
   postCarForm: FormGroup;
-  isSpinning = false;
+  isSpinning:boolean = false;
   selectedFile: File | null = null;
-  imagePreview: string | ArrayBuffer | null = '';
+  imagePreview: string | ArrayBuffer | null = null; // Ensure this is null initially
   listOfBrands: string[] = ['Toyota', 'Honda', 'BMW', 'Mercedes', 'Audi'];
   listOfType: string[] = ['SUV', 'Sedan', 'Hatchback', 'Convertible'];
   listOfTransmission: string[] = ['Automatic', 'Manual'];
@@ -23,7 +23,7 @@ export class PostCarComponent implements OnInit {
     private fb: FormBuilder,
     private adminService: AdminService,
     private message: NzMessageService,
-    private  router :Router
+    private router: Router
   ) {
     // Initialize the form in the constructor
     this.postCarForm = this.fb.group({
@@ -49,7 +49,7 @@ export class PostCarComponent implements OnInit {
     if (this.selectedFile) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.imagePreview = reader.result;
+        this.imagePreview = reader.result as string;
       };
       reader.readAsDataURL(this.selectedFile);
     } else {
@@ -59,8 +59,9 @@ export class PostCarComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.postCarForm.value);
-    this.isSpinning=true;
+    this.isSpinning = true;
     if (this.postCarForm.invalid || !this.selectedFile) {
+      this.isSpinning = false;
       return;
     }
 
@@ -76,16 +77,23 @@ export class PostCarComponent implements OnInit {
     formData.append('price', this.postCarForm.get('price')!.value);
     formData.append('description', this.postCarForm.get('description')!.value);
     formData.append('year', this.postCarForm.get('year')!.value);
-    formData.append('img', this.selectedFile);
+    formData.append('image', this.selectedFile);
+
     console.log('Form Data:', formData);
-    this.adminService.postcar(formData).subscribe((res: any) => {
-      this.message.success("Car posted Successfully", { nzDuration: 5000 });
-      this.router.navigateByUrl("/admin/dashboard");
+
+    this.adminService.postcar(formData).subscribe(
+      (res: any) => {
         this.isSpinning = false;
-      console.log(res)
-    }, error => {
-      this.message.error('Error while posting Car', { nzDuration: 5000 });
-       this.isSpinning = false;
-    });
+          this.message.success('Signup successful', { nzDuration: 5000 });
+        this.router.navigateByUrl('/admin/dashboard');
+        console.log(res);
+
+      },
+      (error) => {
+        this.isSpinning = false;
+        this.message.error('Error while posting Car', { nzDuration: 5000 });
+
+      }
+    );
   }
 }
