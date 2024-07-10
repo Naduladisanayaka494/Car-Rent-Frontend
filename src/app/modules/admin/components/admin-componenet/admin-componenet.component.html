@@ -21,6 +21,13 @@
           Transmission: <b>{{ car.transmission }}</b>
         </h5>
         <hr />
+        <div style="float:right">
+          <button style="margin-left:10px" nzSize="small" nz-button nzType="primary" (click)="
+  deletecar(car.id)" nzDanger>Delete
+
+          </button>
+
+        </div>
       </div>
     </div>
   </div>

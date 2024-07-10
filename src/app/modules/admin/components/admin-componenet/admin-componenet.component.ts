@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-admin-componenet',
@@ -9,7 +10,7 @@ import { AdminService } from '../../service/admin.service';
 export class AdminComponenetComponent implements OnInit {
   cars: any[] = [];
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService,private message :NzMessageService) {}
 
   ngOnInit() {
     this.getAllCars();
@@ -37,5 +38,15 @@ export class AdminComponenetComponent implements OnInit {
     });
   }
 
-  onCarClick() {}
+  onCarClick() { }
+
+  deletecar(id: number) {
+    this.adminService.deleteCar(id).subscribe((res) => {
+      this.getAllCars()
+      this.message.success("Car deleted success fully",{nzDuration:5000})
+    })
+    console.log("id",id)
+
+
+  }
 }
