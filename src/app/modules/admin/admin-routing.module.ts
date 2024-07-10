@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponenetComponent } from './components/admin-componenet/admin-componenet.component';
 import { PostCarComponent } from './components/post-car/post-car.component';
+import { UpdateCarComponent } from './components/update-car/update-car.component';
 
 const routes: Routes = [
   { path: "dashboard", component: AdminComponenetComponent },
-  {path:"car",component:PostCarComponent}
+  { path: "car", component: PostCarComponent },
+  {path:"car/:id", component:UpdateCarComponent}
 
 ];
 

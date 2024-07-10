@@ -1,6 +1,6 @@
-<div style="background-color: #F8F8F8; min-height: 91vh;">
-  <div style="padding-top:10px"></div>
-  <div style="margin-top:10px" class="child" *ngFor="let car of cars">
+<div style="background-color: #f8f8f8; min-height: 91vh">
+  <div style="padding-top: 10px"></div>
+  <div style="margin-top: 10px" class="child" *ngFor="let car of cars">
     <div nz-row nzGutter="16">
       <div nz-col nzSpan="8">
         <!-- <img
@@ -21,11 +21,29 @@
           Transmission: <b>{{ car.transmission }}</b>
         </h5>
         <hr />
-        <div style="float:right">
-          <button style="margin-left:10px" nzSize="small" nz-button nzType="primary" (click)="
-  deletecar(car.id)" nzDanger>Delete
-
+        <div style="float: right">
+          <button
+            style="margin-left: 10px"
+            nzSize="small"
+            nz-button
+            nzType="primary"
+            (click)="deletecar(car.id)"
+            nzDanger
+          >
+            Delete
           </button>
+        </div>
+               <div style="float: right">
+     <button
+  style="margin-left: 10px"
+  nzSize="small"
+  nz-button
+  nzType="primary"
+  [routerLink]="['/admin/car', car.id]"
+
+>
+  Update Car
+</button>
 
         </div>
       </div>
