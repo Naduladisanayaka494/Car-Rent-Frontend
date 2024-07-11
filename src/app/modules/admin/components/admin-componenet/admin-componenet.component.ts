@@ -10,7 +10,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class AdminComponenetComponent implements OnInit {
   cars: any[] = [];
 
-  constructor(private adminService: AdminService,private message :NzMessageService) {}
+  constructor(
+    private adminService: AdminService,
+    private message: NzMessageService
+  ) {}
 
   ngOnInit() {
     this.getAllCars();
@@ -18,35 +21,22 @@ export class AdminComponenetComponent implements OnInit {
 
   getAllCars() {
     this.adminService.getAllCars().subscribe((res) => {
-      console.log(res);
       this.cars = res.map((car: any) => {
+        const processedImg = 'data:image/jpeg;base64' + car.returnImage;
         return {
-          id: car.id,
-          brand: car.brand,
-          color: car.color,
-          name: car.name,
-          type: car.type,
-          transmission: car.transmission,
-          description: car.description,
-          price: car.price,
-          year: car.year,
-          processedImg: car.returnImage
-            ? `data:image/jpeg;base64,${car.returnImage}`
-            : 'default-image-url',
+          ...car,
+          processedImg: processedImg,
         };
       });
     });
   }
 
-  onCarClick() { }
+  onCarClick() {}
 
   deletecar(id: number) {
     this.adminService.deleteCar(id).subscribe((res) => {
-      this.getAllCars()
-      this.message.success("Car deleted success fully",{nzDuration:5000})
-    })
-    console.log("id",id)
-
-
+      this.getAllCars();
+      this.message.success('Car deleted successfully', { nzDuration: 5000 });
+    });
   }
 }

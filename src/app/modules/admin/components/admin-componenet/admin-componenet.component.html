@@ -3,12 +3,12 @@
   <div style="margin-top: 10px" class="child" *ngFor="let car of cars">
     <div nz-row nzGutter="16">
       <div nz-col nzSpan="8">
-        <!-- <img
+        <img
           class="profile"
           style="height:130px; width:200px; border-radius:10px;"
           [src]="car.processedImg"
           alt="Car Image"
-        /> -->
+        />
       </div>
       <div nz-col nzSpan="16">
         <h2 class="car-title" (click)="onCarClick()">
@@ -33,18 +33,16 @@
             Delete
           </button>
         </div>
-               <div style="float: right">
-     <button
-  style="margin-left: 10px"
-  nzSize="small"
-  nz-button
-  nzType="primary"
-  [routerLink]="['/admin/car', car.id]"
-
->
-  Update Car
-</button>
-
+        <div style="float: right">
+          <button
+            style="margin-left: 10px"
+            nzSize="small"
+            nz-button
+            nzType="primary"
+            [routerLink]="['/admin/car', car.id]"
+          >
+            Update Car
+          </button>
         </div>
       </div>
     </div>
