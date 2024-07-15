@@ -35,4 +35,10 @@ export class AdminService {
     let authHeader: HttpHeaders = new HttpHeaders();
     return authHeader.set('authrization', 'Bearer' + StorageService.getToken());
   }
+
+  updateCar(CarId: number, carDto: any): Observable<any>{
+    return this.http.put(BASE_URL + "/api/admin/car/"+CarId, carDto, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
 }
