@@ -47,6 +47,36 @@
       </div>
     </div>
   </div>
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working..." style="margin-top:50px;">
+  <div class="dashboard-filter">
+    <form [formGroup]="validateForm">
+      <div class="filter-grid">
+        <div class="filter-select-dropdown filter-fields-width">
+          <nz-form-item style="margin-left:50px">
+            <nz-form-label [nzSpan]="0" nzFor="fromDate">From Date</nz-form-label>
+            <nz-form-control [nzSpan]="0">
+              <nz-date-picker formControlName="fromDate" style="width:100%" nzPlaceHolder="From date" name="FromDate">
+              </nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item style="margin-left:100px">
+            <nz-form-label [nzSpan]="0" nzFor="toDate">To Date</nz-form-label>
+            <nz-form-control [nzSpan]="0">
+              <nz-date-picker formControlName="toDate" style="width:100%" nzPlaceHolder="To date" name="ToDate">
+              </nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="filter-select-dropdown filter-fields-width">
+          <button class="filterBtn" style="margin-left:45px" nz-button nzType="primary" (click)="booKACar()">
+            Book A Car
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nz-spin>
+
 </div>
 
 

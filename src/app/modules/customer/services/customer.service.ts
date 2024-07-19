@@ -17,10 +17,16 @@ export class CustomerService {
     });
   }
 
-  getCarById(carId:number): Observable<any> {
-    return this.http.get(BASE_URL + '/api/customer/car/'+carId, {
+  getCarById(carId: number): Observable<any> {
+    return this.http.get(BASE_URL + '/api/customer/car/' + carId, {
       headers: this.createAuthorizationHeader(),
     });
+  }
+
+  bookACar(booKACarDTO: any): Observable<any>{
+     return this.http.post(BASE_URL + '/api/customer/car/book' + booKACarDTO, {
+       headers: this.createAuthorizationHeader(),
+     });
   }
 
   createAuthorizationHeader(): HttpHeaders {
