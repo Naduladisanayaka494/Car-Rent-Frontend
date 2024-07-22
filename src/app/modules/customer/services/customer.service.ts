@@ -22,11 +22,11 @@ export class CustomerService {
       headers: this.createAuthorizationHeader(),
     });
   }
-
-  bookACar(booKACarDTO: any): Observable<any>{
-     return this.http.post(BASE_URL + '/api/customer/car/book' + booKACarDTO, {
-       headers: this.createAuthorizationHeader(),
-     });
+  bookACar(bookCarDto: any): Observable<any> {
+    const url = `${BASE_URL}/api/customer/car/book`;
+    return this.http.post(url, bookCarDto, {
+      headers: this.createAuthorizationHeader(),
+    });
   }
 
   createAuthorizationHeader(): HttpHeaders {

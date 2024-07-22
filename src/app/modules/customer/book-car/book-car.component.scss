@@ -140,3 +140,67 @@ button[nz-button] {
 button[nz-button]:hover {
   background-color: #40a9ff;
 }
+
+:host {
+  .car-details {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .profile {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .car-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .action-buttons {
+    margin-top: 20px;
+    text-align: right;
+
+    button {
+      margin-left: 10px;
+    }
+  }
+
+  .dashboard-filter {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .filter-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .filter-select-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filterBtn {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

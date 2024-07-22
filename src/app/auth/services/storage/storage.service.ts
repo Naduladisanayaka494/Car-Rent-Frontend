@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-const TOKEN = "token";
-const USER = "user";
+const TOKEN = 'token';
+const USER = 'user';
 
 @Injectable({
   providedIn: 'root',
@@ -22,42 +22,41 @@ export class StorageService {
   static getToken() {
     return window.localStorage.getItem(TOKEN);
   }
+
   static getUser() {
-    const userJson = localStorage.getItem(USER);
-    if (userJson) {
-      return JSON.parse(userJson);
-    }
-    return null;
+    const user = window.localStorage.getItem(USER);
+    return user ? JSON.parse(user) : null;
+  }
+
+  static getUserId(): string {
+    const user = StorageService.getUser();
+    return user ? user.id : '';
   }
 
   static getUserRole() {
-    const user = this.getUser();
-    if (user === null) {
-      return '';
-    } else {
-      return user.role;
-    }
+    const user = StorageService.getUser();
+    return user ? user.role : '';
   }
 
   static isAdminLoggedIn(): boolean {
-    if (this.getToken() == null) {
+    if (StorageService.getToken() == null) {
       return false;
     } else {
-      const role = (String = this.getUserRole());
-      return role == 'ADMIN';
+      const role: string = StorageService.getUserRole();
+      return role === 'ADMIN';
     }
   }
 
   static isCustomerLoggedIn(): boolean {
-    if (this.getToken() == null) {
+    if (StorageService.getToken() == null) {
       return false;
     } else {
-      const role = (String = this.getUserRole());
-      return role == 'CUSTOMER';
+      const role: string = StorageService.getUserRole();
+      return role === 'CUSTOMER';
     }
   }
 
-  static logout(): void{
+  static logout(): void {
     window.localStorage.removeItem(TOKEN);
     window.localStorage.removeItem(USER);
   }
