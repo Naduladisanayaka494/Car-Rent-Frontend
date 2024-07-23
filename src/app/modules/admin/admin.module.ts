@@ -6,10 +6,11 @@ import { AdminComponenetComponent } from './components/admin-componenet/admin-co
 import { PostCarComponent } from './components/post-car/post-car.component';
 import { NgZorroImportsModule } from '../../NgzorroImportsModule';
 import { UpdateCarComponent } from './components/update-car/update-car.component';
+import { GetBookingsComponent } from './components/get-bookings/get-bookings.component';
 
 
 @NgModule({
-  declarations: [AdminComponenetComponent, PostCarComponent, UpdateCarComponent],
+  declarations: [AdminComponenetComponent, PostCarComponent, UpdateCarComponent, GetBookingsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

@@ -22,7 +22,7 @@ export class AdminComponenetComponent implements OnInit {
   getAllCars() {
     this.adminService.getAllCars().subscribe((res) => {
       this.cars = res.map((car: any) => {
-        const processedImg = 'data:image/jpeg;base64' + car.returnImage;
+        const processedImg = 'data:image/jpeg;base64,' + car.returnImage;
         return {
           ...car,
           processedImg: processedImg,

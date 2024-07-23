@@ -21,14 +21,20 @@ export class AdminService {
     });
   }
 
-  getCarById(id: number): Observable<any>{
-    return this.http.get(BASE_URL + "/api/admin/car/" + id, {
-      headers: this.createAuthorizationHeader()
+  getAllBookings(): Observable<any> {
+    return this.http.get(BASE_URL + '/api/admin/car/bookings', {
+      headers: this.createAuthorizationHeader(),
     });
   }
 
-  deleteCar(id: number): Observable<any>{
-    return this.http.delete(BASE_URL + "/api/admin/car/"+id);
+  getCarById(id: number): Observable<any> {
+    return this.http.get(BASE_URL + '/api/admin/car/' + id, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  deleteCar(id: number): Observable<any> {
+    return this.http.delete(BASE_URL + '/api/admin/car/' + id);
   }
 
   createAuthorizationHeader(): HttpHeaders {
@@ -36,9 +42,9 @@ export class AdminService {
     return authHeader.set('authrization', 'Bearer' + StorageService.getToken());
   }
 
-  updateCar(CarId: number, carDto: any): Observable<any>{
-    return this.http.put(BASE_URL + "/api/admin/car/"+CarId, carDto, {
-      headers: this.createAuthorizationHeader()
+  updateCar(CarId: number, carDto: any): Observable<any> {
+    return this.http.put(BASE_URL + '/api/admin/car/' + CarId, carDto, {
+      headers: this.createAuthorizationHeader(),
     });
   }
 }
