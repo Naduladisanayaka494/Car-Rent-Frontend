@@ -33,6 +33,15 @@ export class AdminService {
     });
   }
 
+  changeBookingStatus(bookingId: number, status: string): Observable<any> {
+      return this.http.get(
+        BASE_URL + `/api/admin/car/booking/${bookingId}/${status}`,
+        {
+          headers: this.createAuthorizationHeader(),
+        }
+      );
+  }
+
   deleteCar(id: number): Observable<any> {
     return this.http.delete(BASE_URL + '/api/admin/car/' + id);
   }
