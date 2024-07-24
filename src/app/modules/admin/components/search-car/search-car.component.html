@@ -1,0 +1,49 @@
+<div class="inner-content">
+  <nz-spin [nzSpinning]="isSpinning" nzSize="large" nzTip="Working...">
+    <div class="dashboard-filter">
+      <form class="filter-grid" [formGroup]="SearchCarForm" (ngSubmit)="searchCar()">
+        <div class="filter-select-dropdown filter-fields-width">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="This input is required">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Brand name" formControlName="brand">
+                <nz-option *ngFor="let brand of listOfBrands" [nzLabel]="brand" [nzValue]="brand"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-control nzErrorTip="This input is required">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Color" formControlName="color">
+                <nz-option *ngFor="let color of listOfColor" [nzLabel]="color" [nzValue]="color"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div class="filter-select-dropdown filter-fields-width">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="This input is required">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Type" formControlName="type">
+                <nz-option *ngFor="let type of listOfType" [nzLabel]="type" [nzValue]="type"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-control nzErrorTip="This input is required">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a transmission" formControlName="transmission">
+                <nz-option *ngFor="let transmission of listOfTransmission" [nzLabel]="transmission" [nzValue]="transmission"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div class="filter-button-wrapper">
+          <button class="filterBtn" nz-button nzType="primary" type="submit">
+            Search Car
+          </button>
+        </div>
+      </form>
+    </div>
+  </nz-spin>
+</div>
