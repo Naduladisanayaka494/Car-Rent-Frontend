@@ -70,4 +70,50 @@
   &:active {
     background-color: #096dd9;
   }
+
+    .child {
+      padding: 20px;
+      width: 780px;
+      background-color: white;
+      box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 1);
+      margin: 20px auto;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 1px 1px 25px -5px rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    .car-title {
+      cursor: pointer;
+      color: #108ee9;
+      font-size: 24px;
+      margin-bottom: 10px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    img.profile {
+      border-radius: 10px;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    h5 {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 14px;
+      color: #666;
+    }
 }

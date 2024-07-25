@@ -15,6 +15,12 @@ export class AdminService {
     });
   }
 
+  searchCar(SearchCarDto: any): Observable<any> {
+    return this.http.post(BASE_URL + '/api/admin/car/search', SearchCarDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   getAllCars(): Observable<any> {
     return this.http.get(BASE_URL + '/api/admin/cars', {
       headers: this.createAuthorizationHeader(),
@@ -34,12 +40,12 @@ export class AdminService {
   }
 
   changeBookingStatus(bookingId: number, status: string): Observable<any> {
-      return this.http.get(
-        BASE_URL + `/api/admin/car/booking/${bookingId}/${status}`,
-        {
-          headers: this.createAuthorizationHeader(),
-        }
-      );
+    return this.http.get(
+      BASE_URL + `/api/admin/car/booking/${bookingId}/${status}`,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
   }
 
   deleteCar(id: number): Observable<any> {
