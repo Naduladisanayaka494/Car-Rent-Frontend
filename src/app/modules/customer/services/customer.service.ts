@@ -34,12 +34,18 @@ export class CustomerService {
     return authHeader.set('authrization', 'Bearer' + StorageService.getToken());
   }
 
-  getBookingsByUserId(): Observable<any>{
+  getBookingsByUserId(): Observable<any> {
     return this.http.get(
       BASE_URL + '/api/customer/car/bookings/' + StorageService.getUserId(),
       {
         headers: this.createAuthorizationHeader(),
       }
     );
+  }
+
+  searchCar(SearchCarDto: any): Observable<any> {
+    return this.http.post(BASE_URL + '/api/admin/car/search', SearchCarDto, {
+      headers: this.createAuthorizationHeader(),
+    });
   }
 }
